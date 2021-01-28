@@ -85,17 +85,15 @@
    <script>
       const phonePlusBtn = document.getElementById("phone-increase");
       phonePlusBtn.addEventListener("click", function () {
-         // plus button increase in input section
+         //plus button increase in input section
          const phoneInput = document.getElementById("phone-count").value;
          const phoneCount = parseInt(phoneInput);
          const newPhoneCount = phoneCount + 1;
          document.getElementById("phone-count").value = newPhoneCount;
-         //increase output show in span
-         // const phoneUnit = document.getElementById("phoneUnitValue").innerText;
-         // const phoneUnitCost = parseInt(phoneUnit);
-         // const totalPhoneUnitCost = phoneUnitCost * newPhoneCount;
-         // phoneUnitCost = totalPhoneUnitCost;
-         
+         const phoneUnit = document.getElementById("phoneUnitValue").innerText;
+         const phoneUnitCost = parseInt(phoneUnit);
+         const totalPhoneUnitCost = phoneUnitCost * newPhoneCount;
+         console.log(totalPhoneUnitCost);
 
       })
    </script>
