@@ -23,13 +23,17 @@
                         <h5>iPhone 11 128GB Black</h5>
                      </div>
 
+                     <!-- input inside the phone amount section-->
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
+                           <!-- minus in phone amount section-->
                            <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <!-- input section in phone amount section-->
+                           <input id="phone-count" type="text" class="form-control text-center" value="1">
+                           <!-- plus in phone amount section-->
+                           <button id="phone-increase" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5>$ <span id="phoneUnitValue">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -77,6 +81,24 @@
          </div>
       </div>
    </section>
+
+   <script>
+      const phonePlusBtn = document.getElementById("phone-increase");
+      phonePlusBtn.addEventListener("click", function () {
+         // plus button increase in input section
+         const phoneInput = document.getElementById("phone-count").value;
+         const phoneCount = parseInt(phoneInput);
+         const newPhoneCount = phoneCount + 1;
+         document.getElementById("phone-count").value = newPhoneCount;
+         //increase output show in span
+         // const phoneUnit = document.getElementById("phoneUnitValue").innerText;
+         // const phoneUnitCost = parseInt(phoneUnit);
+         // const totalPhoneUnitCost = phoneUnitCost * newPhoneCount;
+         // phoneUnitCost = totalPhoneUnitCost;
+         
+
+      })
+   </script>
 </body>
 
 </html>
