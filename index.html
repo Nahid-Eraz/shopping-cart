@@ -27,11 +27,11 @@
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
                            <!-- minus in phone amount section-->
-                           <button id="phone-decrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <button onclick="productButtonHandler('phone', false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
                            <!-- input section in phone amount section-->
                            <input id="phone-count" type="text" class="form-control text-center" value="1">
                            <!-- plus in phone amount section-->
-                           <button id="phone-increase" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick="productButtonHandler('phone', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
                         <!-- total phone unit value in span section -->
                         <h5>$ <span id="phone-unit">1219</span></h5>
@@ -49,15 +49,15 @@
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
                            <!-- minus in case amount section-->
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <button onclick="productButtonHandler('case', false);" class="btn btn-default"><i class="fas fa-minus"></i></button>
                            <!-- input section in case amount section-->
-                           <input type="text" class="form-control text-center" value="1">
+                           <input id="case-count" type="text" class="form-control text-center" value="1">
                            <!-- plus in case amount section-->
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick="productButtonHandler('case', true);" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
                         <!-- total case unit value in span section -->
-                        <h5>$59</h5>
+                        <h5>$ <span id="case-unit">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -88,37 +88,31 @@
    </section>
 
    <script>
-      document.getElementById("phone-increase").addEventListener("click", function () {
-         //plus button increase in input section
-         productButtonHandler(true)
-      })
-      document.getElementById("phone-decrease").addEventListener("click", function () {
-         //minus button increase in input section
-         productButtonHandler(false)
-      })
-
-      function productButtonHandler(isIncrease) {
-         const phoneInput = document.getElementById("phone-count");
-         const phoneCount = parseInt(phoneInput.value);
-         let newPhoneCount = phoneCount;
+      function productButtonHandler(product, isIncrease) {
+         const productInput = document.getElementById(product + "-count");
+         const productCount = parseInt(productInput.value);
+         let newProductCount = productCount;
          if (isIncrease == true) {
-            newPhoneCount = phoneCount + 1;
+            newProductCount = productCount + 1;
          }
          if (isIncrease == false) {
-            newPhoneCount = phoneCount - 1;
-            if (newPhoneCount < 0) {
+            newProductCount = productCount - 1;
+            if (newProductCount < 0) {
                return 0;
             }
          }
-         phoneInput.value = newPhoneCount;
+         productInput.value = newProductCount;
 
          //phone unit price changes in span section
-         const phoneUnit = document.getElementById("phone-unit");
-         const totalPhoneUnitCost = 1219 * newPhoneCount;
-         phoneUnit.innerText = totalPhoneUnitCost;
+         let totalProductUnitCost = 0;
+         if(product == "phone"){
+            totalProductUnitCost = 1219 * newProductCount;
+         }
+         if(product == "case"){
+            totalProductUnitCost = 59 * newProductCount;
+         }
+         document.getElementById(product + "-unit").innerText = totalProductUnitCost;
       }
-
-
    </script>
 </body>
 
