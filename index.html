@@ -73,7 +73,7 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
+                        <h5>$ <span id="sub-total">1278</span></h5>
                         <h5>$0</h5>
                         <h5>$1,278</h5>
                      </div>
@@ -112,6 +112,19 @@
             totalProductUnitCost = 59 * newProductCount;
          }
          document.getElementById(product + "-unit").innerText = totalProductUnitCost;
+         totalCalculation();
+      }
+      function totalCalculation(){
+         const totalPhoneValue = subTotalSection("phone");
+         const totalCaseValue = subTotalSection("case");
+
+         const subTotal = totalPhoneValue + totalCaseValue;
+         document.getElementById("sub-total").innerText = subTotal;
+      }
+      function subTotalSection(product){
+         const totalProduct = document.getElementById(product + "-unit");
+         const totalProductValue = parseInt(totalProduct.innerText);
+         return totalProductValue;
       }
    </script>
 </body>
