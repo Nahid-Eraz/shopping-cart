@@ -83,31 +83,36 @@
    </section>
 
    <script>
-      const phonePlusBtn = document.getElementById("phone-increase").addEventListener("click", function () {
+      document.getElementById("phone-increase").addEventListener("click", function () {
          //plus button increase in input section
-         const phoneInput = document.getElementById("phone-count").value;
-         const phoneCount = parseInt(phoneInput);
-         const newPhoneCount = phoneCount + 1;
-         document.getElementById("phone-count").value = newPhoneCount;
-         //phone unit price increase in span section
-         const phoneUnit = document.getElementById("phone-unit").innerText;
-         const totalPhoneUnitCost = 1219 * newPhoneCount;
-         document.getElementById("phone-unit").innerText = totalPhoneUnitCost;
+         productButtonHandler(true)
       })
-      const phoneMinusBtn = document.getElementById("phone-decrease").addEventListener("click", function(){
+      document.getElementById("phone-decrease").addEventListener("click", function () {
          //minus button increase in input section
-         const phoneInput = document.getElementById("phone-count").value;
-         const phoneCount = parseInt(phoneInput);
-         const newPhoneCount = phoneCount - 1;
-         if(newPhoneCount < 0){
-            return 0;
-         }
-         document.getElementById("phone-count").value = newPhoneCount;
-         //phone unit price decrease in span section
-         const phoneUnit = document.getElementById("phone-unit").innerText;
-         const totalPhoneUnitCost = 1219 * newPhoneCount;
-         document.getElementById("phone-unit").innerText = totalPhoneUnitCost;
+         productButtonHandler(false)
       })
+
+      function productButtonHandler(isIncrease) {
+         const phoneInput = document.getElementById("phone-count");
+         const phoneCount = parseInt(phoneInput.value);
+         let newPhoneCount = phoneCount;
+         if (isIncrease == true) {
+            newPhoneCount = phoneCount + 1;
+         }
+         if (isIncrease == false) {
+            newPhoneCount = phoneCount - 1;
+            if (newPhoneCount < 0) {
+               return 0;
+            }
+         }
+         phoneInput.value = newPhoneCount;
+
+         //phone unit price changes in span section
+         const phoneUnit = document.getElementById("phone-unit");
+         const totalPhoneUnitCost = 1219 * newPhoneCount;
+         phoneUnit.innerText = totalPhoneUnitCost;
+      }
+
    </script>
 </body>
 
