@@ -29,12 +29,12 @@
                            <!-- minus in phone amount section-->
                            <button onclick="productButtonHandler('phone', false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
                            <!-- input section in phone amount section-->
-                           <input id="phone-count" type="text" class="form-control text-center" value="1">
+                           <input id="phone-count" type="text" class="form-control text-center" value="0">
                            <!-- plus in phone amount section-->
                            <button onclick="productButtonHandler('phone', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
                         <!-- total phone unit value in span section -->
-                        <h5>$ <span id="phone-unit">1219</span></h5>
+                        <h5>$ <span id="phone-unit">0</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -51,13 +51,13 @@
                            <!-- minus in case amount section-->
                            <button onclick="productButtonHandler('case', false);" class="btn btn-default"><i class="fas fa-minus"></i></button>
                            <!-- input section in case amount section-->
-                           <input id="case-count" type="text" class="form-control text-center" value="1">
+                           <input id="case-count" type="text" class="form-control text-center" value="0">
                            <!-- plus in case amount section-->
                            <button onclick="productButtonHandler('case', true);" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
                         <!-- total case unit value in span section -->
-                        <h5>$ <span id="case-unit">59</span></h5>
+                        <h5>$ <span id="case-unit">0</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -73,9 +73,9 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$ <span id="sub-total">1278</span></h5>
-                        <h5>$0</h5>
-                        <h5>$1,278</h5>
+                        <h5>$ <span id="sub-total">0</span></h5>
+                        <h5>$ <span id="tax-total">0</span></h5>
+                        <h5>$ <span id="total-total">0</span></h5>
                      </div>
                   </div>
                </div>
@@ -120,6 +120,13 @@
 
          const subTotal = totalPhoneValue + totalCaseValue;
          document.getElementById("sub-total").innerText = subTotal;
+
+         const taxValue = Math.round(subTotal * 0.1);
+         document.getElementById("tax-total").innerText = taxValue;
+
+         const totalTotalValue = taxValue + subTotal;
+         document.getElementById("total-total").innerText = totalTotalValue;
+
       }
       function subTotalSection(product){
          const totalProduct = document.getElementById(product + "-unit");
